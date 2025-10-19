@@ -1,0 +1,10 @@
+<button class="btn btn-primary"
+        [ngClass]="item === selectedItem ? 'btn-selected' : ''"
+        *ngFor="let item of signalData()"
+        (click)="changeCurrentSelection(item)">
+    <ng-container *ngTemplateOutlet="buttonNameTemplate; context: { $implicit: item }"></ng-container>
+    <span (click)="remove.emit(item)">X</span>
+</button>
+<div *ngIf="selectedItem" class="well flex">
+    <ng-container *ngTemplateOutlet="tabContentTemplate; context: { $implicit: selectedItem }"></ng-container>
+</div>

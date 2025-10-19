@@ -1,0 +1,11 @@
+button {
+  margin-right: 5px;
+  span {
+    margin-left: 10px;
+  }
+  &.btn-selected {
+    background-color: #00438c;
+  }
+}
+
+
