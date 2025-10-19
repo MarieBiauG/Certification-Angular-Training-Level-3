@@ -95,7 +95,7 @@ export class WeatherService {
   getForecast(zipcode: string): Observable<Forecast> {
     const forecastCacheKey: string = CacheEntryKey.FIVE_DAY_FORECAST + zipcode;
     const forecastFromCache: Forecast = this.localStorageCacheService.get(forecastCacheKey);
-    if (this.localStorageCacheService.get(forecastCacheKey)) {
+    if (forecastFromCache) {
       return of(forecastFromCache);
     } else {
       return this.http.get<Forecast>(`${WeatherService.URL}/forecast/daily?zip=${zipcode},us&units=imperial&cnt=5&APPID=${WeatherService.APPID}`)
